@@ -1,1 +1,144 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    font-style: inherit;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #4c566a;
+}
+
+.header {
+    display: flex;
+    width: 100vw;
+    color: #2e3440;
+    background-color: #eceff4;
+    padding: 35px;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0px 10px 13px -7px #222121;
+
+}
+
+.header > h1 {
+    font-size: 3.4rem;
+}
+
+.grid {
+    display: grid;
+    padding: 30px;
+    grid-template-columns: repeat(auto-fill, 300px);
+    gap: 30px;
+    grid-auto-rows: 250px;
+}
+
+.newbook {
+    font-size: 24px;
+    font-weight: 700;
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 12px;
+    padding: 10px 20px;
+    color: white;
+}
+
+.newbook:hover {
+    background-color: white;
+    color: black;
+    transition: 0.4s ease;
+}
+
+form div {
+    display: flex;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+
+dialog {
+    border-radius: 12px;
+    background-color: #2e3440;
+    color: #eceff4;
+    border: 1px solid black;
+    padding: 40px; 
+}
+
+
+dialog h2 {
+    text-align: center;
+}
+
+.close {
+ background: 0;
+ border: 0;
+ font-size: 32px;
+ color: #eceff4;
+ position: absolute;
+ top: 10px;
+ left: 290px;
+
+}
+
+[type*='text'], [type*='number'] {
+    height: 50px;
+    width: 250px;
+    border-radius: 12px;
+    border: 0;
+    font-size: 24px;
+}
+
+[type*='checkbox'] {
+    transform: scale(2);
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form div:nth-of-type(2) {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+    font-size: 24px;
+}
+
+input::placeholder {
+    text-align: center;
+    font-size: 24px;
+    opacity: 40%;
+}
+
+ form > legend {
+    font-size: 36px;
+    padding-bottom: 10px;
+}
+
+[type*='submit'] {
+    padding: 10px 40px;
+    font-size: 30px;
+    background-color: #5e81ac;
+    border: 0;
+    border-radius: 12px;
+}
+
+[type*='submit']:hover {
+    opacity: 80%;
+}
+
+dialog::backdrop {
+    background: black;
+    opacity: 0.6;
+}
