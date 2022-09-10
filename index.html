@@ -8,23 +8,23 @@
     <link rel="stylesheet" href="style.css">
     <script src="./index.js" defer></script>
     <link rel="stylesheet" href="reset.css">
+    <link rel="shortcut icon" href="#">
 </head>
 <body>
     <!-- navbar/header -->
     <div class="header">
         <h1>Library</h1>
         <div class="buttons">
-            <button class="newbook">New Book</button>
+            <button class="addbook">New Book</button>
         </div>
     </div>
     <!-- grid -->
     <div class="grid">
-        <div class="bookcard"></div>
     </div>
     <!-- dialog/modal -->
     <dialog>
         <button class="close">x</button>
-        <form action="" id="bookform">
+        <form action="index.html" id="bookform">
             <legend>New Book</legend>
             <div class="input">
                 <input type="text" name="title" id="title" placeholder="Title" required>
@@ -33,9 +33,9 @@
             </div>
             <div>
                 <label for="read">Read?</label>
-                <input type="checkbox" name="read" id="read">
+                <input type="checkbox" name="read" id="read" checked="false">
             </div>
-            <button type="submit" form="bookform">Add</button>
+            <button type="submit" form="bookform" id="submit">Add</button>
         </form>
     </dialog>
 </body>
