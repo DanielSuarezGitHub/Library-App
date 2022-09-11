@@ -66,13 +66,13 @@ function displayBook() {
 function addEventListeners() {
   let removeBook = document.querySelectorAll('.removeBook')
   removeBook.forEach((button) => {
-   button.removeEventListener('click', (e) => bookremove(e.target.id))
-   button.addEventListener('click', (e) => bookremove(e.target.id))
+   button.removeEventListener('click', bookremove)
+   button.addEventListener('click', bookremove)
   })
   let bookRead = document.querySelectorAll('.readButton')
   bookRead.forEach((button) => {
-    button.removeEventListener('click', (e) => booktoggleread(e.target.id) )
-    button.addEventListener("click", (e) => booktoggleread(e.target.id))
+    button.removeEventListener('click', booktoggleread)
+    button.addEventListener("click", booktoggleread)
   })
  }
 
@@ -81,7 +81,8 @@ addBookToLibrary("Harry Potter", "JK Rowling", "304", false)
 addBookToLibrary("Beloved", "Toni Morrison", "567", true)
 addBookToLibrary("Catch 22", "Joseph Heller", "576", true)
 
-function bookremove(index) {
+function bookremove(event) {
+  let index = event.target.id
   myLibrary.splice(index, 1)
   displayBook()
 }
@@ -94,7 +95,8 @@ Book.prototype.toggleread = function() {
   }
 }
 
-function booktoggleread(index) {
+function booktoggleread(event) {
+  let index = event.target.id
   myLibrary[index].toggleread()
   displayBook()
 }
