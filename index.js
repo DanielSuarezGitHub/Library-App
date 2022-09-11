@@ -1,12 +1,12 @@
 const addBook = document.querySelector('.addbook')
 const modal = document.querySelector('dialog')
-const close = document.querySelector('.close')
+const closeModal = document.querySelector('.close')
 const form = document.querySelector('#bookform')
 const submit = document.querySelector('#submit')
 const bookGrid = document.querySelector('.grid')
 /* Controls modal open and close */
 addBook.addEventListener('click', (e) => modal.showModal())
-close.addEventListener('click', (e) => modal.close())
+closeModal.addEventListener('click', (e) => modal.close())
 
 let myLibrary = [];
 
@@ -25,30 +25,80 @@ function addBookToLibrary(title, author, pages, read) {
 function displayBook() {
   /* reset the grid */
   bookGrid.innerHTML = ""
+  /* loop through the myLibrary array */
   for(let i = 0; myLibrary.length > i; i++ ) {
+    /* add index */
+    myLibrary[i].index = i
+    /* create card elements */
     let card = document.createElement('div')
     let name = document.createElement('p')
     let auth = document.createElement('p')
     let pagecount = document.createElement('p')
     let bookRead = document.createElement('button')
     let removeBook = document.createElement('div')
-    removeBook.textContent = "x"
+    /* add classes for styling */
+    card.classList.add('card')
+    removeBook.setAttribute('id', i)
+    bookRead.setAttribute('id', i)
+    removeBook.classList.add('removeBook')
+    bookRead.classList.add('readButton')
+    /* add elements to dom */
     bookGrid.appendChild(card)
     card.appendChild(removeBook)
-    card.classList.add('card')
     card.appendChild(name)
     card.appendChild(auth)
     card.appendChild(pagecount)
     card.appendChild(bookRead)
+    /* add text content to dom elements */
     name.textContent = myLibrary[i].title
     auth.textContent = myLibrary[i].author
+    removeBook.textContent = "x"
     pagecount.textContent = myLibrary[i].pages
     bookRead.textContent = "Read?"
+    /* add read class */
     if (myLibrary[i].read == true) {
       bookRead.classList.add('read')
     }
+    addEventListeners()
   }
 }
 
-addBookToLibrary("The Hobbit", "J. R. R. Tolkien", "304", false)
-addBookToLibrary("Harry Potter", "JK Rowling", "304", true)
+function addEventListeners() {
+  let removeBook = document.querySelectorAll('.removeBook')
+  removeBook.forEach((button) => {
+   button.removeEventListener('click', (e) => bookremove(e.target.id))
+   button.addEventListener('click', (e) => bookremove(e.target.id))
+  })
+  let bookRead = document.querySelectorAll('.readButton')
+  bookRead.forEach((button) => {
+    button.removeEventListener('click', (e) => booktoggleread(e.target.id) )
+    button.addEventListener("click", (e) => booktoggleread(e.target.id))
+  })
+ }
+
+addBookToLibrary("The Hobbit", "J. R. R. Tolkien", "304", true)
+addBookToLibrary("Harry Potter", "JK Rowling", "304", false)
+addBookToLibrary("Beloved", "Toni Morrison", "567", true)
+addBookToLibrary("Catch 22", "Joseph Heller", "576", true)
+
+function bookremove(index) {
+  myLibrary.splice(index, 1)
+  displayBook()
+}
+
+Book.prototype.toggleread = function() {
+  if(this.read == true) {
+    this.read = false
+  } else {
+    this.read = true
+  }
+}
+
+function booktoggleread(index) {
+  myLibrary[index].toggleread()
+  displayBook()
+}
+
+
+
+
