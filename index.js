@@ -2,7 +2,7 @@ const addBook = document.querySelector('.addbook')
 const modal = document.querySelector('dialog')
 const closeModal = document.querySelector('.close')
 const form = document.querySelector('#bookform')
-const submit = document.querySelector('#submit')
+const submit = document.querySelector('#submit').addEventListener('click', submitBook)
 const bookGrid = document.querySelector('.grid')
 /* Controls modal open and close */
 addBook.addEventListener('click', (e) => modal.showModal())
@@ -76,10 +76,6 @@ function addEventListeners() {
   })
  }
 
-addBookToLibrary("The Hobbit", "J. R. R. Tolkien", "304", true)
-addBookToLibrary("Harry Potter", "JK Rowling", "304", false)
-addBookToLibrary("Beloved", "Toni Morrison", "567", true)
-addBookToLibrary("Catch 22", "Joseph Heller", "576", true)
 
 function bookremove(event) {
   let index = event.target.id
@@ -103,4 +99,18 @@ function booktoggleread(event) {
 
 
 
+function submitBook() {
+  let title = document.querySelector('#title').value
+  let author = document.querySelector('#Author').value
+  let pages = document.querySelector('#Pages').value
+  let checkbox = document.querySelector('#read:checked')
+  let checked = true
+  if (checkbox == null) {
+    checked = false
+  }
+  if(title != '' && author != '' && pages !='') {
+    addBookToLibrary(title, author, pages, checked)
+    modal.close()
+  }
+}
 

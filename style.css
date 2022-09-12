@@ -126,7 +126,7 @@ input::placeholder {
     padding-bottom: 10px;
 }
 
-[type*='submit'] {
+#submit {
     padding: 10px 40px;
     font-size: 30px;
     background-color: #5e81ac;
